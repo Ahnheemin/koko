@@ -18,7 +18,7 @@ import rt.koko.action.ProjectAction;
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet("/Login/*")
+@WebServlet("/login/*")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -28,7 +28,7 @@ public class LoginController extends HttpServlet {
     	
 		String requestURI = request.getRequestURI();
 		String contextPath = request.getContextPath();
-		String command = requestURI.substring(contextPath.length()+10);
+		String command = requestURI.substring(contextPath.length()+7);
 		System.out.println(command);
 		
 		Action action = null;
