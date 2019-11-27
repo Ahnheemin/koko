@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rt.koko.mapper.DocumentMapper">
+	<cache />
+
+	<!-- 글등록 -->
+	<insert id="documentInsert" parameterType="DocumentDO">
+		insert into document values(
+			doc_seq.nextval, #{doc_title}, #{doc_content}, #{doc_file}, SYSDATE, 'aaa'
+		)
+	</insert>
+	
+	<!-- 글목록 -->
+	<select id="documentList" parameterType="DocumentSearchDO" resultType="DocumentDO">
+		select * from document
+		<if test="area != null">
+			<where>
+				<foreach collection="area" item="item" separator="OR"
+					open="(" close=")">
+					${item} LIKE #{searchKey}
+				</foreach>
+			</where>
+		</if>
+		order by doc_seq desc
+	</select>
+
+	<!-- 글내용 -->
+	<select id="documentDetail" parameterType="int" resultType="DocumentDO">
+		select * from document
+			where doc_seq = #{doc_seq}
+	</select>
+
+	<!-- 수정 -->
+	<update id="documentUpdate" parameterType="DocumentDO">
+		update document
+			set doc_title=#{doc_title}, doc_file=#{doc_file}, doc_content=#{doc_content}
+			where doc_seq = #{doc_seq}
+	</update>
+	
+	<!-- 삭제 -->
+	<delete id="documentDelete" parameterType="int">
+		delete from document
+		where doc_seq=#{doc_seq}
+	</delete>
+
+	<!-- 검색 -->
+	<select id="documentSearch" parameterType="int" resultType="DocumentDO">
+		select *
+			from document
+			where doc_seq = #{doc_seq}
+	</select>
+
+	<!-- 페이징 -->
+	<select id="documentCount" parameterType="DocumentSearchDO" resultType="int">
+		select count(*) from document
+		<if test="area != null">
+			<where>
+				<foreach collection="area" item="item" separator="OR"
+					open="(" close=")">
+					${item} LIKE #{searchKey}
+				</foreach>
+			</where>
+		</if>
+	</select>
+	
+</mapper>
+
+
+

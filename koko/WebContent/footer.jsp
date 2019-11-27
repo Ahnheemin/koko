@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-ss
-브랜치 백업
-브랜치 테스트
+	<hr>
+	copyrighter
 </body>
 </html>
