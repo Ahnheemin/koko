@@ -4,6 +4,7 @@ public class ActionForward {
 	private boolean isRedirect;
 	private String path;
 	
+<<<<<<< HEAD
 	public boolean isRedirect() {
 		return isRedirect;
 	}
@@ -22,4 +23,30 @@ public class ActionForward {
 	
 	
 	
+=======
+	public ActionForward() {}
+
+	public ActionForward(boolean isRedirect, String path) {
+		super();
+		this.isRedirect = isRedirect;
+		this.path = path;
+	}
+
+	public boolean isRedirect() {
+		return isRedirect;
+	}
+
+	public void setRedirect(boolean isRedirect) {
+		this.isRedirect = isRedirect;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
+>>>>>>> branch 'test' of https://github.com/Ahnheemin/koko.git
 }

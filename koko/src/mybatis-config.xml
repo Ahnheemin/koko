@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
@@ -21,6 +22,33 @@
 	
 	<mappers>
 		<mapper resource="rt/koko/persistence/Document.xml"/>
+=======
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<typeAliases>
+		<typeAlias type ="rt.koko.domain.MemberDO" alias="MemberDO"/>
+	</typeAliases>
+	
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>
+			<dataSource type="JNDI">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+				<property name="username" value="koko"/>
+				<property name="password" value="1234"/>
+				<property name="data_source" value="java:comp/env/jdbc/oracle"/>
+			</dataSource>
+		</environment>		
+	</environments>
+	
+	<mappers>
+		<mapper resource="rt/koko/persistence/TodoList.xml"/> <!-- todoList 등록 -->
+		<mapper resource="rt/koko/persistence/Login.xml"/> <!-- login 등록 -->
+>>>>>>> branch 'test' of https://github.com/Ahnheemin/koko.git
 	</mappers>
 	
 </configuration>
