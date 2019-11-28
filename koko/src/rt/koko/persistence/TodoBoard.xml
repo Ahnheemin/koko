@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 	private int b_seq;
+	private String m_id;
+	private String bl_no;
+	private String b_fileNo;
+	private String b_title;
+	private String b_contents;
+	private String b_regdate;
+	private String b_type;
+	private String b_scope;
+	private String b_lastUpdate;
+	private String b_hitcount; -->
+
+<mapper namespace="rt.koko.mapper.TodoBoardMapper">
+	<cache />
+	<!-- 글쓰기 권한 조회 -->
+	<select id="boardAuthorityRead" parameterType="String" resultType="String">
+		select a.a_board from authority a, memberList m
+		where a.a_authorityNo = m.authorityNo
+			and m.m_id = #{0}
+			and m.p_no = #{1}
+		<!-- 0: m_id / 1: p_no -->
+	</select>
+	
+	<!-- 게시글 작성 insert -->
+	<insert id="todoBoardInsert" parameterType="TodoBoardDO">
+		insert into TodoBoard
+			values(board_seq.NEXTVAL, #{m_id}, 'bl003', #{b_title},
+					#{b_contents}, sysdate, #{b_type}, #{b_scope},
+					sysdate, 0, TO_NUMBER(#{bf_seq}))	
+	</insert>
+	
+	<!-- 현재 시퀀스 조회 -->
+	<select id="boardSeqRead" resultType="int">
+		select board_seq.currval from dual
+	</select>
+
+	<!-- 게시판 리스트(BoardList) insert -->
+	<insert id="boardListInsert" parameterType="String">
+		insert into BoardList
+			values(#{0}, TO_NUMBER(#{1}))
+	</insert>
+	
+	<!-- 프로젝트별 게시글 불러오기 select -->
+	<select id="todoBoardListRead" parameterType="String" resultType="TodoBoardDO">
+		select b.b_seq, b.m_id, b.bl_no,
+			   b.bf_seq, b.b_title, b.b_contents,
+			   b.b_regdate, b.b_type, b.b_scope,
+			   b.b_lastUpdate, b.b_hitcount,
+			   bf.bf_name
+		from TodoBoard b, BoardList bl, boardFile bf
+		where bl.p_no = #{p_no}
+		and bf.bf_seq = b.bf_seq
+		and b.b_seq = bl.b_seq
+	</select>
+	
+	
+	
+	<!-- file insert -->
+	<insert id="boardFileInsert" parameterType="String">
+		insert into boardfile
+			values(TO_NUMBER(#{0}), #{1}, sysdate)
+	</insert>
+	<!-- file seq 읽기 -->
+	<select id="boardFileSeqRead" resultType="int">
+		select bf_seq.nextval from dual
+	</select>
+	
+
+	<!-- TodoBoard 수정 (Update) -->
+	<update id="todoBoardUpdate" parameterType="TodoBoardDO">
+		update todoboard
+		set b_title = #{b_title},
+			b_contents = #{b_contents},		
+			b_lastUpdate = sysdate,
+			b_scope = #{b_scope},
+			b_type = #{b_type}
+			
+		where b_seq = #{b_seq}
+		and m_id = #{m_id}
+		
+	</update>
+	
+	
+	<!-- TodoBoard 삭제 (Delete) -->
+	<delete id="todoBoardDelete" parameterType = "int">
+		delete todoboard
+		where b_seq = #{b_seq}
+	</delete>
+	
+	
+	<!-- 댓글 입력 (Insert) -->
+	<insert id="todoReplyInsert" parameterType="TodoReplyDO">
+		insert into todoreply
+			values (reply_seq.NEXTVAL, #{br_contents}, sysdate, #{b_seq},
+				    #{br_fileNo}, #{m_id})
+	</insert>
+	
+	<!-- replyList insert -->
+	<insert id="replyListInsert" parameterType="int">
+		insert int replyList
+			values(#{0}, #{1})
+		<!-- 0: b_seq / 1: br_seq -->
+	</insert>
+	
+	<!-- 댓글 리스트 읽기 (select) -->
+	<select id="todoReplyListRead" resultType="todoReplyDO">
+		select * from todoReply
+	</select>
+	
+	<!-- 댓글 수정 (Update) -->
+	<update id="todoReplyUpdate" parameterType="TodoReplyDO">
+		update todoreply set
+			br_contents = #{br_contents},
+			br_lastUpdate = sysdate
+		where br_seq = #{br_seq}
+	</update>
+	
+	<!-- 댓글 삭제 (Delete) -->
+	<delete id="todoReplyDelete" parameterType="int">
+		delete todoreply
+		where br_seq = #{br_seq}
+	</delete>
+	
+	<!-- 해당 프로젝트의 게시글 갯수 -->
+	<select id="boardCount" parameterType="String" resultType="int">
+		select count(*) from boardList
+		where p_no = #{p_no}
+	</select>
+	
+</mapper>

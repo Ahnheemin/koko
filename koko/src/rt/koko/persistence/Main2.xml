@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 	private String p_no;
+	private String p_name;
+	private String p_regdate;
+	private String p_startDate;
+	private String p_endDate;
+	private String m_id; -->
+
+<mapper namespace="rt.koko.mapper.Main2Mapper">
+	<cache />
+	
+	<!-- 프로젝트 담당자 -->
+	<select id="projectManagerRead" parameterType="String" resultType="String">
+		select m_id from c_project
+		where p_no = #{p_no}
+	</select>
+	
+	<!-- 권한 Update -->
+	<!-- <update id="authorityUpdate" parameterType="String">
+	 	{call 
+     		declare 
+     			begin 
+     				update member
+						set authorityNo = 'AT001'
+							<where>
+								<if test='0 != null and 1 != null and 0 != "" and 1 != ""'>
+									m_id = #{0},
+									#{0} = #{1}
+								</if>
+							</where>;
+					
+					update member
+						set authorityNo = 'AT003'
+							<where>
+								<if test='0 != null and 1 != null and 0 != "" and 1 != ""'>
+									m_id = #{0},
+									#{0} != #{1}
+								</if>
+							</where>;
+
+		end
+		}
+		</update> -->
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
