@@ -23,6 +23,8 @@
 	
 	<mappers>
 		<mapper resource="rt/koko/persistence/Address.xml"/>
+		<mapper resource="rt/koko/persistence/Document.xml"/>
+		
 	</mappers>
 	
 	
