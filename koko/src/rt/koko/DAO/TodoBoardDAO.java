@@ -12,8 +12,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 import rt.koko.domain.TodoBoardDO;
 import rt.koko.domain.TodoReplyDO;
 import rt.koko.mapper.TodoBoardMapper;
@@ -286,58 +284,6 @@ public class TodoBoardDAO {
 		return re;
 	}
 	
-	
-	
-	// json
-	//JSONArray로 회원목록 가져오기
 
-	public JSONArray getTodoReplyJSONArray() {
-
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	ResultSet rs = null;
-
-	String sql = "";
-
-	JSONArray jsonArray = new JSONArray();
-
-	try {
-
-		con = H2DBUtil.getConnection();
-		sql = "SELECT * FROM member ORDER BY id";
-
-		pstmt = con.prepareStatement(sql);
-
-		rs = pstmt.executeQuery();
-
-	while (rs.next()) {
-
-	JSONObject jsonObject = new JSONObject(); //Map컬렉션
-
-	jsonObject.put("id",rs.getString("id"));
-
-	jsonObject.put("password",rs.getString("password"));
-
-	jsonObject.put("name",rs.getString("name"));
-
-	jsonObject.put("email",rs.getString("email"));
-
-	jsonArray.add(jsonObject);
-
-	}
-
-	} catch (Exception e) {
-
-	e.printStackTrace();
-
-	} finally {
-
-	//H2DBUtil.closeJDBC(con, pstmt, rs);
-
-	}
-
-	return jsonArray;
-
-	}
 	
 }
