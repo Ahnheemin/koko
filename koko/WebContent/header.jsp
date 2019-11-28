@@ -13,7 +13,7 @@
 			<li><a class="menuLink" href="http://192.168.0.41:8008">채팅</a></li>
 			<li><a class="menuLink" href="#">일정</a></li>
 			<li><a class="menuLink" href="#">메일</a></li>
-			<li><a class="menuLink" href="#">주소록</a></li>
+			<li><a class="menuLink" href="http://localhost:8081/koko/address/list.do">주소록</a></li>
 			<li><a class="menuLink" href="http://localhost:8081/koko/document/DocumentListAction.do">자료실</a></li>
 			<li><a class="menuLink" href="#">챗봇</a></li>
 		</ul>
