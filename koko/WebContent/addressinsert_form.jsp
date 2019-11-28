@@ -7,10 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="address/list.do">연락처 목록</a>
+<a href="/koko/address/list.do">연락처 목록</a>
 <h3>연락처 등록</h3>
 <hr>
-<form action="address/AddressInsertAction.do" method="post">
+<form action="/koko/address/AddressInsertAction.do" method="post">
 
 	이름 : <input type="text" name="ad_name"><br>
 	이메일 : <input type="text" name="ad_email"><br>

@@ -9,7 +9,7 @@ public class AddressInsertFormAction implements Action{
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		ActionForward forward = new ActionForward();
 		
-		forward.setPath("/ADDRESS/addressinsert_form.jsp");
+		forward.setPath("/koko/addressinsert_form.jsp");
 		forward.setRedirect(true);
 		
 		return forward;

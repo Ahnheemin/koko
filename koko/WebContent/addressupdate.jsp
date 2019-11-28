@@ -8,7 +8,7 @@
 <title>주소록 업데이트 </title>
 </head>
 <body>
-<form action="updateAction.do">
+<form action="koko/address/updateAction.do">
 <input type="hidden" value="${b.ad_seq }" name="ad_seq">
 이름 : <input type="text" value="${b.ad_name }" name="ad_name"><br>
 이메일 : <input type="text" value="${b.ad_email }" name="ad_email"><br>
