@@ -8,8 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<script src="/koko/address/jquery.js" type="text/javascript"></script>
-<script src="/koko/address/addresslist.js" type="text/javascript"></script>
+<script src="/koko/jquery.js" type="text/javascript"></script>
+<script src="/koko/addresslist.js" type="text/javascript"></script>
 
 </head>
 <body>
