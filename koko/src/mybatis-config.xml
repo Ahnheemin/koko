@@ -8,6 +8,9 @@
 		<typeAlias type="rt.koko.domain.AddressDO" alias="AddressDO"/>
 		<typeAlias type="rt.koko.domain.AddressCheckDO" alias="AddressCheckDO"/>
 		<typeAlias type="rt.koko.domain.AddressSearchDO" alias="AddressSearchDO"/>
+		<typeAlias type="rt.koko.domain.EmailDo" alias="EmailDo"/>		
+		<typeAlias type="rt.koko.domain.EmailListSearchDo" alias="EmailListSearchDo"/>		
+		<typeAlias type="rt.koko.domain.EmailDeleteDo" alias="EmailDeleteDo"/>
 		<typeAlias type="rt.koko.domain.DocumentDO" alias="DocumentDO"/>
 		<typeAlias type="rt.koko.domain.DocumentSearchDO" alias="DocumentSearchDO"/>
 	</typeAliases>
@@ -23,6 +26,7 @@
 	
 	<mappers>
 		<mapper resource="rt/koko/persistence/Address.xml"/>
+		<mapper resource="rt/koko/persistence/Email.xml"/>
 		<mapper resource="rt/koko/persistence/Document.xml"/>
 		
 	</mappers>
