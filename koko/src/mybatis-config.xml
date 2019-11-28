@@ -8,6 +8,8 @@
 		<typeAlias type="rt.koko.domain.AddressDO" alias="AddressDO"/>
 		<typeAlias type="rt.koko.domain.AddressCheckDO" alias="AddressCheckDO"/>
 		<typeAlias type="rt.koko.domain.AddressSearchDO" alias="AddressSearchDO"/>
+		<typeAlias type="rt.koko.domain.DocumentDO" alias="DocumentDO"/>
+		<typeAlias type="rt.koko.domain.DocumentSearchDO" alias="DocumentSearchDO"/>
 	</typeAliases>
 	
 	<environments default="development">
