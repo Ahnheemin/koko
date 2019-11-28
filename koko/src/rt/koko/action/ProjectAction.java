@@ -34,7 +34,7 @@ public class ProjectAction implements Action {
 		request.setAttribute("m_admin", m_admin);
 		
 		forward.setRedirect(true);
-		forward.setPath("/TodoBoard/todoBoard/todoBoardReadAction.do?p_no="+p_no+"&m_id="+m_id+"&p_name="+p_name);
+		forward.setPath("/koko/todoBoard/todoBoardReadAction.do?p_no="+p_no+"&m_id="+m_id+"&p_name="+p_name);
 		
 		return forward;
 	}

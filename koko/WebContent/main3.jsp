@@ -29,11 +29,11 @@
 }
 	
 </style>
-<script src="/TodoBoard/js/jquery.js" type="text/javascript"></script>
-<script src="/TodoBoard/js/jquery-1.10.2.min.js"></script>
-<script src="/TodoBoard/js/jquery.ba-throttle-debounce.min.js"></script>
-<script src="/TodoBoard/js/dragAndDrop.js" type="text/javascript"></script>
-<script src="/TodoBoard/js/scroll.js" type="text/javascript"></script>
+<script src="/koko/js/jquery.js" type="text/javascript"></script>
+<script src="/koko/js/jquery-1.10.2.min.js"></script>
+<script src="/koko/js/jquery.ba-throttle-debounce.min.js"></script>
+<script src="/koko/js/dragAndDrop.js" type="text/javascript"></script>
+<script src="/koko/js/scroll.js" type="text/javascript"></script>
 
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -43,7 +43,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 
-<script type="text/javascript" src="/TodoBoard/js/chart.js"></script>
+<script type="text/javascript" src="/koko/js/chart.js"></script>
 
 
 </head>
@@ -63,7 +63,7 @@
 	
 	<h2>글 작성폼</h2>
 	<div id ="writeForm">
-	<form action="/TodoBoard/todoBoard/todoBoardInsertAction.do?p_no=${p_no }&m_id=${login.m_id }"
+	<form action="/koko/todoBoard/todoBoardInsertAction.do?p_no=${p_no }&m_id=${login.m_id }"
 	method="post" enctype="multipart/form-data">
 		<h4>작성자: ${login.m_name }</h4><br>
 		<!-- board의 시퀀스 알아야 한다 -->
@@ -99,7 +99,7 @@
 					<li>작성일자: ${boardList.b_lastUpdate }</li>
 					<li>글유형: ${boardList.b_type }</li>
 					<c:if test="${boardList.bf_name != null }">
-					<li>파일: <a href="/TodoBoard/download.jsp?bf_name=${boardList.bf_name }">${boardList.bf_name }</a></li>
+					<li>파일: <a href="/koko/download.jsp?bf_name=${boardList.bf_name }">${boardList.bf_name }</a></li>
 					</c:if>
 					<li>내용: ${boardList.b_contents }</li>
 					<c:if test="${boardList.m_id == login.m_id }">
@@ -136,7 +136,7 @@
 							<li>작성일자: ${boardList.b_lastUpdate }</li>
 							<li>글유형: ${boardList.b_type }</li>
 							<c:if test="${boardList.bf_name != null }">
-							<li>파일: <a href="/TodoBoard/download.jsp?bf_name=${boardList.bf_name }">${boardList.bf_name }</a></li>
+							<li>파일: <a href="/koko/download.jsp?bf_name=${boardList.bf_name }">${boardList.bf_name }</a></li>
 							</c:if>
 							<li>내용: ${boardList.b_contents }</li>
 							<c:if test="${boardList.m_id == login.m_id }">

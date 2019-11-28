@@ -18,7 +18,7 @@
 	<c:if test="${projectList != null }">
 		<c:forEach var="project" items="${projectList }">
 			<hr>
-				<a href="/TodoBoard/main2/projectAction.do?p_no=${project.p_no }&m_id=${login.m_id }&p_name=${project.p_name }">${project.p_name }</a>
+				<a href="/koko/main2/projectAction.do?p_no=${project.p_no }&m_id=${login.m_id }&p_name=${project.p_name }">${project.p_name }</a>
 			<hr>
 		</c:forEach>
 	</c:if>
