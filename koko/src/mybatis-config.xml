@@ -5,14 +5,25 @@
 
 <configuration>
 	<typeAliases>
+		<!-- address -->
 		<typeAlias type="rt.koko.domain.AddressDO" alias="AddressDO"/>
 		<typeAlias type="rt.koko.domain.AddressCheckDO" alias="AddressCheckDO"/>
 		<typeAlias type="rt.koko.domain.AddressSearchDO" alias="AddressSearchDO"/>
+		
+		<!-- email -->
 		<typeAlias type="rt.koko.domain.EmailDo" alias="EmailDo"/>		
 		<typeAlias type="rt.koko.domain.EmailListSearchDo" alias="EmailListSearchDo"/>		
 		<typeAlias type="rt.koko.domain.EmailDeleteDo" alias="EmailDeleteDo"/>
+		
+		<!-- document -->
 		<typeAlias type="rt.koko.domain.DocumentDO" alias="DocumentDO"/>
 		<typeAlias type="rt.koko.domain.DocumentSearchDO" alias="DocumentSearchDO"/>
+		
+		<!-- login & todolist -->
+		<typeAlias type ="rt.koko.domain.MemberDO" alias="MemberDO"/>
+		<typeAlias type ="rt.koko.domain.TodoBoardDO" alias="TodoBoardDO"/>
+		<typeAlias type ="rt.koko.domain.TodoReplyDO" alias="TodoReplyDO"/>
+		<typeAlias type ="rt.koko.domain.ProjectDO" alias="ProjectDO"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -25,9 +36,19 @@
 	</environments>
 	
 	<mappers>
+		<!-- address -->
 		<mapper resource="rt/koko/persistence/Address.xml"/>
+		
+		<!-- email -->
 		<mapper resource="rt/koko/persistence/Email.xml"/>
+		
+		<!-- document -->
 		<mapper resource="rt/koko/persistence/Document.xml"/>
+		
+		<!-- login & todolist -->
+		<mapper resource="rt/koko/persistence/TodoBoard.xml"/> <!-- todoList 등록 -->
+		<mapper resource="rt/koko/persistence/Login.xml"/> <!-- login 등록 -->
+		<mapper resource="rt/koko/persistence/Main2.xml"/> <!-- main2 등록 -->
 		
 	</mappers>
 	
