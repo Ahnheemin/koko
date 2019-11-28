@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="rt.koko.mapper.AddressMapper">
+	<cache />
+	<!-- 1. 주소록 등록 쿼리문 -->
+	<insert id="addressInsert" parameterType="AddressDO">
+		insert into address values( 'aaa' , #{ad_name}, #{ad_email}, #{ad_company}, #{ad_department}, #{ad_phonenumber}, ad_seq.nextval)
+	</insert>
+	
+	<!-- 2. 주소록 리스트 보기 쿼리문 -->
+	<select id="addressList" parameterType="AddressSearchDO" resultType="AddressDO">
+	select * from address
+	<if test = "area != null">
+	<where>
+	<foreach collection="area" item="item" separator="OR"
+			open ="(" close = ")">
+			${item} LIKE #{searchkey}
+			</foreach>
+		</where>
+		</if>
+	ORDER BY ad_seq
+	</select>
+	
+	<!-- DELETE FROM 테이블명 WHERE 삭제대상 -->
+	<!-- 3. 주속록 체크된 리스트 다중 삭제  쿼리문-->
+	<!-- delete from address where ad_seq in(1,2); -->
+	<!--foreach 문 안에서 사용할 매개변수 이름이 item  -->
+	<delete id="addressDelete" parameterType="AddressCheckDO">
+	delete from address
+	WHERE ad_seq IN
+	<foreach collection="check" item = "item" 
+	open = "(" separator="," close = ")">
+	${item}
+	</foreach>
+	</delete>
+	
+	<!-- 선택한 주소록으로 가기 -->
+	<select id="addressSelect" parameterType="int" resultType="AddressDO">
+	select * from address
+	WHERE ad_seq = #{ad_seq}
+	</select>
+	
+	<update id="addressUpdate" parameterType="AddressDO">
+	 update address set ad_name = #{ad_name}, ad_email = #{ad_email}, ad_company = #{ad_company}, ad_department = #{ad_department}, ad_phonenumber = #{ad_phonenumber}
+	WHERE ad_seq = #{ad_seq}
+	</update>
+	
+	<select id="addressCount" parameterType="AddressSearchDO" resultType="int">
+	select count(*) from address
+	<if test = "area != null">
+	<where>
+	<foreach collection="area" item="item" separator="OR"
+			open ="(" close = ")">
+			${item} LIKE #{searchkey}
+			</foreach>
+		</where>
+		</if>
+	ORDER BY ad_seq
+	</select>
+	
+	
+	<!-- alter table delete constraint 이름; -->
+	<!-- alter table add constraint 이름 foreign key(컬럼이름) references 참조테이블 (참조컬럼) on delete cascade -->
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
